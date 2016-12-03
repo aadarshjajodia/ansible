@@ -1,0 +1,8 @@
+Steps to run this
+
+Before Proceeding go to hosts file and change the ip address username and password corresponding to the VM that was created.
+Now run the following command
+ansible-playbook main.yml -i hosts --ask-sudo-pass
+
+On asking for the sudo password enter the password used for logging in to the root user for the created VM
+
