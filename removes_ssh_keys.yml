@@ -1,0 +1,39 @@
+---
+- hosts: all
+
+  become: yes
+
+  tasks:
+
+  - name: Generate RSA SSH-key pair for server
+    expect:
+      command: ssh-keygen -f /etc/ssh/ssh_host_rsa_key_temp -N '' -t rsa
+      timeout: 5
+      responses:
+        "Overwrite": "y"
+
+  - name: Generate DSA SSH-key pair for server
+    expect:
+      command: ssh-keygen -f /etc/ssh/ssh_host_dsa_key_temp -N '' -t dsa
+      timeout: 5
+      responses:
+        "Overwrite": "y"
+
+  - name: Generate ECDSA SSH-key pair for server
+    expect:
+      command: ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key_temp -N '' -t ecdsa -b 521
+      timeout: 5
+      responses:
+        "Overwrite": "y"
+
+  - name: "Changing sshd_config to pick up new keys"
+    replace:
+      dest: /etc/ssh/sshd_config
+      regexp: '(\s+.*)_key$'
+      replace: '\1_key_temp'
+      backup: yes
+
+  - name: Restart sshd
+    service:
+      name: 'ssh'
+      state: 'restarted'

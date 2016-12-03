@@ -1,0 +1,18 @@
+---
+- hosts: all
+
+  become: yes
+
+  vars_prompt:
+  - name: User_Password
+    prompt: "Enter Pass"
+    default: "hex-lab1"
+    private: yes
+    encrypt: "sha512_crypt"
+    confirm: yes
+    salt_size: 7
+
+  tasks:
+
+  - name: Add Several Users
+    user: name="new_user9" comment="Test User9" password="{{ User_Password }}"

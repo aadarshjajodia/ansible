@@ -1,0 +1,16 @@
+---
+- hosts: all
+
+  become: yes
+
+  vars_prompt:
+    - name: Hostname
+      prompt: "Enter hostname"
+      default: "hex-lab10"
+
+  tasks:
+  - name: "Changing hostname under /etc/hosts"
+    replace: dest="/etc/hosts" regexp="{{ansible_nodename}}" replace="{{Hostname}}" backup="yes"
+
+  - name: "Changing hostname under /etc/hostname"
+    hostname: name="{{Hostname}}"

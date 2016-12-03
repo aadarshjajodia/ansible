@@ -1,0 +1,1 @@
+172.16.241.210 ansible_ssh_pass=a ansible_ssh_user=aadarshjajodia ansible_become=true

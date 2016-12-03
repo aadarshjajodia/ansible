@@ -1,0 +1,12 @@
+---
+- hosts: all
+
+  become: yes
+
+  tasks:
+
+  - name: Upgrade Pip and pexpect
+    shell: pip install --upgrade pip
+
+  - name: Upgrade Pexpect Library
+    shell: pip install --upgrade pexpect

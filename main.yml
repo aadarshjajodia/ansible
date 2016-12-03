@@ -1,0 +1,4 @@
+- include: install_dependencies.yml
+- include: hostname.yml
+- include: users.yml
+- include: removes_ssh_keys.yml
