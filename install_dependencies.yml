@@ -5,6 +5,9 @@
 
   tasks:
 
+  - name: Install Python-Pip
+    shell: apt install -y python-pip
+
   - name: Upgrade Pip and pexpect
     shell: pip install --upgrade pip
 
