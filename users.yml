@@ -4,6 +4,11 @@
   become: yes
 
   vars_prompt:
+  - name: UserName
+    prompt: "Enter Username"
+    default: "hex-lab1"
+    private: no
+
   - name: User_Password
     prompt: "Enter Pass"
     default: "hex-lab1"
@@ -15,4 +20,4 @@
   tasks:
 
   - name: Add Several Users
-    user: name="new_user9" comment="Test User9" password="{{ User_Password }}"
+    user: name="{{ UserName }}" comment="{{ UserName }}" password="{{ User_Password }}"
