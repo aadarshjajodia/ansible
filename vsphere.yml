@@ -1,0 +1,8 @@
+---
+  tasks:
+  - name: Install Python-Pip
+    local_action:
+        module: vmware_vm_facts
+        hostname: 130.245.42.100
+        username: aadarsh@vsphere.local
+        password: xdfd0326%PRL$
