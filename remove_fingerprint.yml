@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Remove Existing Fingerprint
+    lineinfile: dest={{ansible_user_dir}}/.ssh/known_hosts
+                state=absent
+                regexp='^130.245.42.87' 
