@@ -1,8 +1,21 @@
-Steps to run this
+This project is aimed at doing some customizations on VM's that are provisioned using VMWare.
+The customizations are:
+1. Installing some dependencies which might be needed in the customizations below.
+2. Adding users to the VM
+3. Regenrating SSH keys.
+4. Changing Hostname of the VM
 
-Before Proceeding go to hosts file and change the ip address username and password corresponding to the VM that was created.
-Now run the following command
+Current Dependencies:
+1. Pip on the remote machine
+2. Passlib on the client(where ansible is running)
+
+How to use this:
+
+This repository contains a hosts file which lists all the hosts where we want this ansible script on.
+The structure of the hosts file is:
+<vm_ip_address> ansible_ssh_pass=<vm_sudo_password> ansible_ssh_user=<vm_username> ansible_become=true
+
+For each new VM, all the 4 values specified above in the hosts file needs to be added at the end of the hosts file.
+
+For running the script use the following command:
 ansible-playbook main.yml -i hosts --ask-sudo-pass
-
-On asking for the sudo password enter the password used for logging in to the root user for the created VM
-
